@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+ <head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>FaizalBot - Bot Discord yang Sederhana & Keren</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f0f1a;
+      color: #f8fafc;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    h1, h2 {
+      font-family: 'Montserrat', sans-serif;
+    }
+    a {
+      transition: all 0.3s ease;
+    }
+    a:hover {
+      color: #7c3aed;
+    }
+  </style>
+ </head>
+ <body class="flex flex-col min-h-screen">
+  <nav class="bg-[#1a1a2e] sticky top-0 z-50 shadow-md">
+   <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <a class="text-2xl font-bold flex items-center text-[#7c3aed]" href="#">
+     <i class="fas fa-robot mr-2"></i> FaizalBot
+    </a>
+    <ul class="hidden md:flex space-x-8 text-sm font-medium">
+     <li><a class="hover:text-[#a78bfa]" href="#features">Fitur</a></li>
+     <li><a class="hover:text-[#a78bfa]" href="#preview">Pratinjau</a></li>
+     <li><a class="hover:text-[#a78bfa]" href="#contact">Kontak</a></li>
+     <li><a class="bg-[#7c3aed] px-4 py-2 rounded-full text-white hover:bg-[#6d28d9]" href="#">Home</a></li>
+    </ul>
+    <div class="md:hidden text-2xl cursor-pointer text-[#7c3aed]" id="mobile-menu-button">
+     <i class="fas fa-bars"></i>
+    </div>
+   </div>
+   <ul class="hidden flex-col bg-[#1a1a2e] text-center space-y-4 py-6 text-white text-lg" id="mobile-menu">
+    <li><a class="block hover:text-[#a78bfa]" href="#features">Fitur</a></li>
+    <li><a class="block hover:text-[#a78bfa]" href="#preview">Pratinjau</a></li>
+    <li><a class="block hover:text-[#a78bfa]" href="#contact">Kontak</a></li>
+    <li><a class="inline-block bg-[#7c3aed] px-6 py-2 rounded-full text-white hover:bg-[#6d28d9]" href="#">Undang</a></li>
+   </ul>
+  </nav>
+
+  <header class="flex-grow flex flex-col justify-center items-center text-center px-6 py-20 bg-gradient-to-br from-[#1a1a2e] to-[#0f0f1a]">
+   <h1 class="text-5xl md:text-6xl font-extrabold mb-6 text-[#7c3aed] drop-shadow-lg">FaizalBot</h1>
+   <p class="max-w-xl text-[#a1a1aa] mb-8 text-lg md:text-xl">Teman Discord Anda yang sederhana dan kuat.</p>
+   <div class="relative inline-block">
+     <button onclick="toggleShareOptions()" class="bg-[#7c3aed] hover:bg-[#6d28d9] text-white font-semibold px-8 py-3 rounded-full shadow-lg transition">
+       Undang Sekarang
+     </button>
+     <div id="shareOptions" class="hidden absolute mt-2 right-0 w-64 z-50 transform transition-all duration-300 opacity-0 translate-y-2 bg-[#1a1a2e] border border-[#2e2e40] rounded-lg shadow-xl">
+       <button onclick="shareWhatsApp()" class="flex items-center w-full px-4 py-3 hover:bg-[#2e2e40] text-left text-white">
+         <i class="fab fa-whatsapp mr-2 text-green-400"></i> Bagikan ke WhatsApp
+       </button>
+       <button onclick="shareInstagram()" class="flex items-center w-full px-4 py-3 hover:bg-[#2e2e40] text-left text-white">
+         <i class="fab fa-instagram mr-2 text-pink-500"></i> Bagikan ke Instagram
+       </button>
+       <button onclick="shareTikTok()" class="flex items-center w-full px-4 py-3 hover:bg-[#2e2e40] text-left text-white">
+         <i class="fab fa-tiktok mr-2 text-white"></i> Bagikan ke TikTok
+       </button>
+       <button onclick="copyLink()" class="flex items-center w-full px-4 py-3 hover:bg-[#2e2e40] text-left text-white">
+         <i class="fas fa-link mr-2 text-blue-400"></i> Salin Link
+       </button>
+     </div>
+   </div>
+  </header>
+
+  <section class="container mx-auto px-6 py-16" id="features">
+   <h2 class="text-3xl font-bold text-center mb-12 text-[#7c3aed]">Fitur</h2>
+   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+    <div class="bg-[#1a1a2e] rounded-xl p-6 text-center shadow-md hover:shadow-lg transition">
+     <i class="fas fa-shield-alt text-[#7c3aed] text-4xl mb-4"></i>
+     <h3 class="font-semibold text-xl mb-2">Moderasi</h3>
+     <p class="text-[#a1a1aa] text-sm">Otomatis moderasi server Anda dengan mudah.</p>
+    </div>
+    <div class="bg-[#1a1a2e] rounded-xl p-6 text-center shadow-md hover:shadow-lg transition">
+     <i class="fas fa-gamepad text-[#7c3aed] text-4xl mb-4"></i>
+     <h3 class="font-semibold text-xl mb-2">Permainan</h3>
+     <p class="text-[#a1a1aa] text-sm">Mini-game seru untuk menghibur komunitas Anda.</p>
+    </div>
+    <div class="bg-[#1a1a2e] rounded-xl p-6 text-center shadow-md hover:shadow-lg transition">
+     <i class="fas fa-music text-[#7c3aed] text-4xl mb-4"></i>
+     <h3 class="font-semibold text-xl mb-2">Musik</h3>
+     <p class="text-[#a1a1aa] text-sm">Streaming musik dari YouTube dan Spotify.</p>
+    </div>
+   </div>
+  </section>
+
+  <section class="bg-[#1a1a2e] py-16" id="preview">
+   <div class="container mx-auto px-6 max-w-4xl text-center">
+    <h2 class="text-3xl font-bold mb-8 text-[#7c3aed]">Lihat Dalam Aksi</h2>
+    <img class="mx-auto rounded-lg shadow-lg" src="https://storage.googleapis.com/a1aa/image/413d5fd1-362f-40c8-08c0-c50f5f14dffc.jpg" width="600" height="400" alt="Pratinjau dashboard FaizalBot">
+   </div>
+  </section>
+
+  <section class="container mx-auto px-6 py-16 text-center" id="contact">
+   <h2 class="text-3xl font-bold mb-6 text-[#7c3aed]">Hubungi Kami</h2>
+   <p class="mb-6 text-[#a1a1aa] max-w-xl mx-auto">Ada pertanyaan? Saran? Hubungi kami di WhatsApp atau Instagram atau Tiktok milik kami.</p>
+   <div class="flex justify-center space-x-6 text-3xl text-[#7c3aed]">
+    <a href="https://wa.me/6282250760160" aria-label="WhatsApp" class="hover:text-[#a78bfa]"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.instagram.com/maz_teplu" aria-label="Instagram" class="hover:text-[#a78bfa]"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@maz_teplu" aria-label="Tiktok" class="hover:text-[#a78bfa]"><i class="fab fa-tiktok"></i></a>
+   </div>
+  </section>
+
+  <footer class="bg-[#0f0f1a] py-6 text-center text-[#6b7280] text-sm">
+   © 2025 FaizalBot. Semua hak dilindungi.
+  </footer>
+
+  <div id="toast" class="fixed bottom-6 right-6 bg-[#323248] text-white text-sm px-4 py-3 rounded-lg shadow-md hidden opacity-0 transition-opacity duration-300 z-[9999]">Link berhasil disalin!</div>
+  <audio id="notifSound" src="tiktokio.com_m225CRzw3vYoeF5sHpgV.mp3" preload="auto"></audio>
+
+  <script>
+    const mobileMenuBtn = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    const linkUndangan = "https://contoh.com/undangan";
+
+    function toggleShareOptions() {
+      const box = document.getElementById('shareOptions');
+      if (box.classList.contains('hidden')) {
+        box.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          box.classList.remove('opacity-0', 'translate-y-2');
+          box.classList.add('opacity-100', 'translate-y-0');
+        });
+      } else {
+        box.classList.remove('opacity-100', 'translate-y-0');
+        box.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => {
+          box.classList.add('hidden');
+        }, 300);
+      }
+    }
+
+    function shareWhatsApp() {
+      window.open(`https://wa.me/?text=${encodeURIComponent(linkUndangan)}`, '_blank');
+    }
+
+    function shareInstagram() {
+      showToast("Silakan salin link dan bagikan manual di Instagram.");
+    }
+
+    function shareTikTok() {
+      showToast("Silakan salin link dan tempel di TikTok.");
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(linkUndangan)
+        .then(() => showToast("Link berhasil disalin!"))
+        .catch(() => showToast("Gagal menyalin link."));
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const sound = document.getElementById('notifSound');
+
+      toast.textContent = message;
+      toast.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        toast.classList.add('opacity-100');
+      });
+
+      if (sound) {
+        sound.currentTime = 0;
+        sound.play().catch(() => {});
+      }
+
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+        setTimeout(() => toast.classList.add('hidden'), 300);
+      }, 3000);
+    }
+
+    document.addEventListener('click', function(event) {
+      const shareBox = document.getElementById('shareOptions');
+      if (!event.target.closest('.relative') && !shareBox.classList.contains('hidden')) {
+        toggleShareOptions();
+      }
+    });
+  </script>
+ </body>
+</html>
